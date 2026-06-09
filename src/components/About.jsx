@@ -23,7 +23,7 @@ export default function About() {
               <div className="about-avatar">
                 <div className="avatar-ring">
                   <div className="avatar-circle">
-                    <img src="/profile.jpg" alt="Prashant Yadav" />
+                    <img src="/profile.jpg" alt="Prashant Yadav — E-commerce & Digital Marketing Specialist" loading="lazy" decoding="async" width="132" height="132" />
                   </div>
                 </div>
               </div>

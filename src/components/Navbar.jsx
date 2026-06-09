@@ -1,17 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, FileText } from 'lucide-react'
+import { navLinks } from '../data/navLinks'
+import ThemeToggle from './ThemeToggle'
 
-const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/about', label: 'About' },
-  { path: '/experience', label: 'Experience' },
-  { path: '/services', label: 'Services' },
-  { path: '/contact', label: 'Contact' },
-]
-
-export default function Navbar() {
+export default function Navbar({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const location = useLocation()
@@ -60,19 +54,25 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Menu">
-        <AnimatePresence mode="wait">
-          {open ? (
-            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-              <X size={22} />
-            </motion.div>
-          ) : (
-            <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-              <Menu size={22} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </button>
+      <div className="nav-actions">
+        <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+        <a className="nav-resume" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+          <FileText size={15} /> Resume
+        </a>
+        <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Menu" aria-expanded={open}>
+          <AnimatePresence mode="wait">
+            {open ? (
+              <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <X size={22} />
+              </motion.div>
+            ) : (
+              <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                <Menu size={22} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </button>
+      </div>
     </motion.nav>
   )
 }
