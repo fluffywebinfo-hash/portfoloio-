@@ -22,7 +22,9 @@ export default function About() {
             <div className="about-image-card">
               <div className="about-avatar">
                 <div className="avatar-ring">
-                  <div className="avatar-circle">PY</div>
+                  <div className="avatar-circle">
+                    <img src="/profile.jpg" alt="Prashant Yadav" />
+                  </div>
                 </div>
               </div>
               <div className="about-status-bar">
