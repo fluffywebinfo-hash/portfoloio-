@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import About from '../components/About'
+import GlobalStrip from '../components/GlobalStrip'
 import Skills from '../components/Skills'
 import Projects from '../components/Projects'
 import Services from '../components/Services'
@@ -12,6 +13,7 @@ export default function Home() {
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <Hero />
       <About />
+      <GlobalStrip />
       <Skills />
       <Projects />
       <Services />
