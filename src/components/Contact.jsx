@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, MessageCircle, MapPin, Linkedin, Instagram, Facebook } from 'lucide-react'
 
-const EMAIL = 'yadavprashant63318@gmail.com'
+const EMAIL = 'yadavprashant53318@gmail.com'
 const WHATSAPP = '+91 73106 76695'
 const WHATSAPP_LINK = 'https://wa.me/917310676695'
 
