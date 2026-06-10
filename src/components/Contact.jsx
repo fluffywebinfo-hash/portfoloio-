@@ -38,12 +38,15 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const serviceLabel = services.find((s) => s.value === form.service)?.label || 'General Inquiry'
-    const subject = encodeURIComponent(`Project Inquiry: ${serviceLabel}`)
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nService: ${serviceLabel}\n\n${form.message}`
+    const text = encodeURIComponent(
+      `Hi Prashant, I'd like to connect!\n\n` +
+        `*Name:* ${form.name}\n` +
+        `*Email:* ${form.email}\n` +
+        `*Service:* ${serviceLabel}\n\n` +
+        `*Message:*\n${form.message}`
     )
-    // Opens the visitor's email client pre-filled (works with no backend)
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+    // Redirect to WhatsApp chat with the message pre-filled (works with no backend)
+    window.open(`${WHATSAPP_LINK}?text=${text}`, '_blank', 'noopener,noreferrer')
     setSent(true)
     setForm({ name: '', email: '', service: '', message: '' })
     setTimeout(() => setSent(false), 6000)
@@ -144,7 +147,7 @@ export default function Contact() {
 
             {sent && (
               <motion.div className="form-status success" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}>
-                Thanks! Your email client should open — or reach me directly at {EMAIL}
+                Thanks! WhatsApp should open with your message — or reach me on {WHATSAPP}
               </motion.div>
             )}
 
@@ -154,9 +157,9 @@ export default function Contact() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Send Message
+              Send via WhatsApp
             </motion.button>
-            <p className="form-note">Prefer email? Write to {EMAIL} — replies within 24 hours.</p>
+            <p className="form-note">This opens WhatsApp with your details pre-filled. Prefer email? Write to {EMAIL}.</p>
           </motion.form>
         </div>
       </div>
