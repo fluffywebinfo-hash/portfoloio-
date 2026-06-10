@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Repo name is used as the base path for GitHub Pages project sites:
-// https://<user>.github.io/portfoloio-/
 // https://vite.dev/config/
+// Note: no `base` is set so the app serves from the domain root.
+// This is correct for Vercel/Netlify (portfoloio-tawny.vercel.app).
 export default defineConfig({
-  base: '/portfoloio-/',
   plugins: [react()],
 })
