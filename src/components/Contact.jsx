@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, MessageCircle, MapPin, Linkedin, Instagram, Facebook } from 'lucide-react'
 
-// Update these with real details before going live
-const EMAIL = 'prashant.yadav@example.com'
-const WHATSAPP = '+91 00000 00000'
+const EMAIL = 'yadavprashant63318@gmail.com'
+const WHATSAPP = '+91 73106 76695'
+const WHATSAPP_LINK = 'https://wa.me/917310676695'
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
-  { icon: MessageCircle, label: 'WhatsApp', value: WHATSAPP, href: null },
-  { icon: MapPin, label: 'Location', value: 'Delhi, India · Remote Worldwide', href: null },
+  { icon: MessageCircle, label: 'WhatsApp', value: WHATSAPP, href: WHATSAPP_LINK },
+  { icon: MapPin, label: 'Location', value: 'Delhi NCR, India · Remote Worldwide', href: null },
 ]
 
 const socials = [
@@ -88,7 +88,11 @@ export default function Contact() {
                   whileHover={{ x: 5 }}
                 >
                   {item.href ? (
-                    <a href={item.href} className="contact-item-link">{Inner}</a>
+                    <a
+                      href={item.href}
+                      className="contact-item-link"
+                      {...(item.href.startsWith('mailto:') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                    >{Inner}</a>
                   ) : Inner}
                 </motion.div>
               )
