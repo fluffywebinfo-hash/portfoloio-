@@ -46,7 +46,7 @@ function App() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <ScrollProgress />
       <ScrollToTop />
